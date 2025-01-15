@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# VS Code settings
+.vscode/
+
+# Temp files
+*.tmp
+
+# Ignore the exported files
+web_export/
