@@ -17,17 +17,17 @@ func get_input():
 		set_walking_animation(input_direction)
 	else:
 		set_idle_animation()
-	
-	
 
 func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 
+# Set the walking animation of the player based on the direction they are
+# moving in
 func set_walking_animation(direction):
 	var facing = get_facing_direction(direction)
-	last_facing_direction = facing
-	print('Walking Facing: ', get_facing_direction_text(facing))
+	# Store the latest walking direction so we can set the proper idle animation
+	last_facing_direction = facing 
 	
 	match facing:
 		FACING_DIRECTION.FRONT:
@@ -43,9 +43,10 @@ func set_walking_animation(direction):
 			anim_sprite.play('walk_right')
 			return
 		
+
+# Set the idle animation of the player based on the most recent walking direction
 func set_idle_animation():
 	var facing = last_facing_direction
-	print('Idle Facing: ', get_facing_direction_text(facing))
 	match facing:
 		FACING_DIRECTION.FRONT:
 			anim_sprite.play('idle_front')
@@ -60,6 +61,7 @@ func set_idle_animation():
 			anim_sprite.play('idle_right')
 			return
 
+# Determine which direction the player is facing based on its movement vector
 func get_facing_direction(direction: Vector2) -> FACING_DIRECTION:
 	if direction.x > 0:
 		return FACING_DIRECTION.RIGHT
@@ -71,7 +73,8 @@ func get_facing_direction(direction: Vector2) -> FACING_DIRECTION:
 		return FACING_DIRECTION.FRONT
 		
 	return FACING_DIRECTION.NONE
-	
+
+# Get the text of the facing direction for pretty printing purposes
 func get_facing_direction_text(dir: FACING_DIRECTION) -> String:
 	match dir:
 		FACING_DIRECTION.FRONT:
