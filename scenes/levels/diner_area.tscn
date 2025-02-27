@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://qkd308dtfqwi"]
+[gd_scene load_steps=9 format=4 uid="uid://qkd308dtfqwi"]
 
 [ext_resource type="Texture2D" uid="uid://m8x26ue1faqe" path="res://assets/images/world/diner_tiles_1.png" id="1_hsm8c"]
 [ext_resource type="PackedScene" uid="uid://2t1csv41dyot" path="res://scenes/interaction/menu_area.tscn" id="2_5snhd"]
 [ext_resource type="PackedScene" uid="uid://cjfkxoh812y6w" path="res://scenes/player/player.tscn" id="3_0kc20"]
+[ext_resource type="PackedScene" uid="uid://khfb5hbqb3ds" path="res://scenes/controls/hud.tscn" id="5_lt7cu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11t1m"]
 texture = ExtResource("1_hsm8c")
@@ -81,8 +82,13 @@ position = Vector2(168, 68)
 position = Vector2(167, 138)
 collision_mask = 3
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-167, -138)
+[node name="HUD" parent="." instance=ExtResource("5_lt7cu")]
+offset_left = -40.0
+offset_top = 208.0
+offset_right = -40.0
+offset_bottom = 208.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(4, 4)
 limit_left = 0
