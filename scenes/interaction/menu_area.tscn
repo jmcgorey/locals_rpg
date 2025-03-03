@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2t1csv41dyot"]
 
-[ext_resource type="Script" path="res://scenes/interaction/menu_area.gd" id="1_31nsd"]
+[ext_resource type="Script" uid="uid://bi2drqonnypyh" path="res://scenes/interaction/menu_area.gd" id="1_31nsd"]
 [ext_resource type="PackedScene" uid="uid://cqqlkdy6m6p1e" path="res://scenes/interaction/interaction_area.tscn" id="2_fppd7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t1t7"]
