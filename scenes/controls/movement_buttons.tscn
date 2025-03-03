@@ -1,15 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtvsduisenxpg"]
+[gd_scene load_steps=10 format=3 uid="uid://dtvsduisenxpg"]
 
-[ext_resource type="Texture2D" uid="uid://dker1nbc21o84" path="res://assets/images/controls/up-arrow.png" id="1_1ecdk"]
-[ext_resource type="Texture2D" uid="uid://ctxvd60a1tg6i" path="res://assets/images/controls/up-arrow-pressed.png" id="2_35kha"]
-[ext_resource type="Texture2D" uid="uid://bbu04q2m2x8vl" path="res://assets/images/controls/down-arrow.png" id="2_ysm6j"]
-[ext_resource type="Texture2D" uid="uid://dkd0kx5ernl7x" path="res://assets/images/controls/left-arrow.png" id="3_d23et"]
-[ext_resource type="Texture2D" uid="uid://h8odpvtnpxbi" path="res://assets/images/controls/down-arrow-pressed.png" id="4_42ktg"]
-[ext_resource type="Texture2D" uid="uid://dfrwu2i0nvmh8" path="res://assets/images/controls/right-arrow.png" id="4_rurgw"]
-[ext_resource type="Texture2D" uid="uid://2twv6mb0njse" path="res://assets/images/controls/left-arrow-pressed.png" id="6_3wvd7"]
-[ext_resource type="Texture2D" uid="uid://b03hcmdfxwdjf" path="res://assets/images/controls/right-arrow-pressed.png" id="8_ahvq1"]
+[ext_resource type="Texture2D" uid="uid://dud1f1nmw3na1" path="res://assets/images/controls/dpad-v1-center.png" id="1_vcg0g"]
+[ext_resource type="Texture2D" uid="uid://7l76608b6f41" path="res://assets/images/controls/dpad-v1-up-unpressed.png" id="2_vwq2t"]
+[ext_resource type="Texture2D" uid="uid://blr27j78e33dp" path="res://assets/images/controls/dpad-v1-up-pressed.png" id="3_u1quh"]
+[ext_resource type="Texture2D" uid="uid://cwt78gs0p6al0" path="res://assets/images/controls/dpad-v1-down-unpressed.png" id="4_24etv"]
+[ext_resource type="Texture2D" uid="uid://djfjum1xl71bx" path="res://assets/images/controls/dpad-v1-down-pressed.png" id="5_rh6ja"]
+[ext_resource type="Texture2D" uid="uid://ba7cprno4ewlg" path="res://assets/images/controls/dpad-v1-left-unpressed.png" id="6_vcg0g"]
+[ext_resource type="Texture2D" uid="uid://c5wu8t07h5p16" path="res://assets/images/controls/dpad-v1-left-pressed.png" id="7_vwq2t"]
+[ext_resource type="Texture2D" uid="uid://sdbu6a54ynvy" path="res://assets/images/controls/dpad-v1-right-unpressed.png" id="8_bk3p8"]
+[ext_resource type="Texture2D" uid="uid://ncde64kpm0xp" path="res://assets/images/controls/dpad-v1-right-pressed.png" id="9_sxro7"]
 
 [node name="MovementButtons" type="Control"]
+modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -21,26 +23,30 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="DpadCenter" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_vcg0g")
+
 [node name="UpButton" type="TouchScreenButton" parent="."]
-position = Vector2(-8, -12)
-texture_normal = ExtResource("1_1ecdk")
-texture_pressed = ExtResource("2_35kha")
+position = Vector2(-8, -22)
+texture_normal = ExtResource("2_vwq2t")
+texture_pressed = ExtResource("3_u1quh")
 action = "move_up"
 
 [node name="DownButton" type="TouchScreenButton" parent="."]
-position = Vector2(-8, 4)
-texture_normal = ExtResource("2_ysm6j")
-texture_pressed = ExtResource("4_42ktg")
+position = Vector2(-8, 6)
+texture_normal = ExtResource("4_24etv")
+texture_pressed = ExtResource("5_rh6ja")
 action = "move_down"
 
-[node name="Left Button" type="TouchScreenButton" parent="."]
-position = Vector2(-24, -4)
-texture_normal = ExtResource("3_d23et")
-texture_pressed = ExtResource("6_3wvd7")
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(-22, -8)
+texture_normal = ExtResource("6_vcg0g")
+texture_pressed = ExtResource("7_vwq2t")
 action = "move_left"
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(8, -4)
-texture_normal = ExtResource("4_rurgw")
-texture_pressed = ExtResource("8_ahvq1")
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(6, -8)
+texture_normal = ExtResource("8_bk3p8")
+texture_pressed = ExtResource("9_sxro7")
 action = "move_right"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dker1nbc21o84"
-path="res://.godot/imported/up-arrow.png-941c966a466dc7dcf996712c175576b6.ctex"
+uid="uid://ncde64kpm0xp"
+path="res://.godot/imported/dpad-v1-right-pressed.png-4881c9e9af0b81b9750611c4d2c4758e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/controls/up-arrow.png"
-dest_files=["res://.godot/imported/up-arrow.png-941c966a466dc7dcf996712c175576b6.ctex"]
+source_file="res://assets/images/controls/dpad-v1-right-pressed.png"
+dest_files=["res://.godot/imported/dpad-v1-right-pressed.png-4881c9e9af0b81b9750611c4d2c4758e.ctex"]
 
 [params]
 

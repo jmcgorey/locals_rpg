@@ -220,14 +220,14 @@ shape = SubResource("RectangleShape2D_mupjf")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="HUD" parent="Camera2D" instance=ExtResource("3_k4iqe")]
+[node name="HUD" parent="." instance=ExtResource("3_k4iqe")]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_left = -77.0
-offset_top = 50.0
-offset_right = -77.0
-offset_bottom = 50.0
+offset_left = -95.0
+offset_top = 45.0
+offset_right = -95.0
+offset_bottom = 45.0
 grow_horizontal = 1
 grow_vertical = 0
 size_flags_horizontal = 0
