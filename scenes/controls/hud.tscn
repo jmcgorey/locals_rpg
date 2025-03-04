@@ -1,14 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://khfb5hbqb3ds"]
+[gd_scene load_steps=3 format=3 uid="uid://khfb5hbqb3ds"]
 
 [ext_resource type="PackedScene" uid="uid://dtvsduisenxpg" path="res://scenes/controls/movement_buttons.tscn" id="1_a4pkp"]
+[ext_resource type="PackedScene" uid="uid://cg0ip4jtpq3qg" path="res://scenes/controls/interaction_button.tscn" id="2_x4cgb"]
 
-[node name="HUD" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HUD" type="CanvasLayer"]
 
 [node name="MovementButtons" parent="." instance=ExtResource("1_a4pkp")]
-layout_mode = 1
+modulate = Color(1, 1, 1, 0.498039)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -28.0
+offset_right = 64.0
+offset_bottom = -28.0
+grow_vertical = 0
+
+[node name="InteractionButton" parent="." instance=ExtResource("2_x4cgb")]
+modulate = Color(1, 1, 1, 0.498039)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -64.0
+offset_top = -28.0
+offset_right = -64.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0

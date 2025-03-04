@@ -1,8 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjfkxoh812y6w"]
+[gd_scene load_steps=27 format=3 uid="uid://cjfkxoh812y6w"]
 
 [ext_resource type="Script" uid="uid://b07rt5fs66c8p" path="res://scripts/player_scripts/player.gd" id="1_q01g0"]
 [ext_resource type="Texture2D" uid="uid://bt1o6o78uqth5" path="res://assets/images/npcs/LocalBoyCharacter.png" id="2_lmb1s"]
-[ext_resource type="PackedScene" uid="uid://khfb5hbqb3ds" path="res://scenes/controls/hud.tscn" id="3_k4iqe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0n7ro"]
 atlas = ExtResource("2_lmb1s")
@@ -219,16 +218,3 @@ shape = SubResource("RectangleShape2D_mupjf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-
-[node name="HUD" parent="." instance=ExtResource("3_k4iqe")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_left = -95.0
-offset_top = 45.0
-offset_right = -95.0
-offset_bottom = 45.0
-grow_horizontal = 1
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 8

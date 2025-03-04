@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg0ip4jtpq3qg"]
+
+[ext_resource type="Texture2D" uid="uid://b5d7v8uxf50i8" path="res://assets/images/controls/interaction_button_unpressed.png" id="1_g6nqy"]
+[ext_resource type="Texture2D" uid="uid://dxk77x7o51h2u" path="res://assets/images/controls/interaction_button_pressed.png" id="2_siofn"]
+
+[node name="InteractionButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(-16, -16)
+texture_normal = ExtResource("1_g6nqy")
+texture_pressed = ExtResource("2_siofn")
+action = "interact"
