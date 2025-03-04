@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://db2v13w25iy6g"]
+[gd_scene load_steps=10 format=4 uid="uid://db2v13w25iy6g"]
 
 [ext_resource type="Texture2D" uid="uid://bff0qwrl4v2hg" path="res://assets/images/world/starter_outside_tileset.png" id="1_ir7ua"]
 [ext_resource type="PackedScene" uid="uid://cjfkxoh812y6w" path="res://scenes/player/player.tscn" id="2_hxrqa"]
 [ext_resource type="Texture2D" uid="uid://dtr2mumaysyf7" path="res://assets/images/set_pieces/The_Big_Rock.png" id="3_trcsm"]
 [ext_resource type="Texture2D" uid="uid://cx5gi21p3gwmw" path="res://assets/images/set_pieces/Gold_Deli.png" id="4_p0erp"]
+[ext_resource type="PackedScene" uid="uid://khfb5hbqb3ds" path="res://scenes/controls/hud.tscn" id="5_bi0wy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wcwqp"]
 texture = ExtResource("1_ir7ua")
@@ -194,3 +195,5 @@ shape = SubResource("RectangleShape2D_i222j")
 [node name="Player" parent="." instance=ExtResource("2_hxrqa")]
 z_index = 1
 position = Vector2(240, 184)
+
+[node name="HUD" parent="." instance=ExtResource("5_bi0wy")]
