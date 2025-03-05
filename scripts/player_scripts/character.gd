@@ -6,6 +6,11 @@ class_name Character extends CharacterBody2D
 # The sprite used to animate the character
 @export var anim_sprite: AnimatedSprite2D
 
+# On startup, start the character idling in the passed in direction
+func _ready() -> void:
+	set_idle_animation()
+
+
 # Turns the character to face the specified direction
 func set_direction(direction: FACING_DIRECTION) -> void:
 	facing_direction = direction

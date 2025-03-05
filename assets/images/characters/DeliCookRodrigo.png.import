@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt1o6o78uqth5"
-path="res://.godot/imported/LocalBoyCharacter.png-ba137a46e2c7a8816677dd42edc0bcb2.ctex"
+uid="uid://dc71c1nrfme63"
+path="res://.godot/imported/DeliCookRodrigo.png-04528476371f60d6b6ec390a39689f83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/npcs/LocalBoyCharacter.png"
-dest_files=["res://.godot/imported/LocalBoyCharacter.png-ba137a46e2c7a8816677dd42edc0bcb2.ctex"]
+source_file="res://assets/images/characters/DeliCookRodrigo.png"
+dest_files=["res://.godot/imported/DeliCookRodrigo.png-04528476371f60d6b6ec390a39689f83.ctex"]
 
 [params]
 
