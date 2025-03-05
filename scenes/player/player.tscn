@@ -203,9 +203,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mupjf"]
 size = Vector2(10, 7)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_sprite")]
 collision_mask = 7
 script = ExtResource("1_q01g0")
+anim_sprite = NodePath("AnimSprite")
 
 [node name="AnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_44hdn")

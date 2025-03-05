@@ -1,7 +1,10 @@
 class_name Character extends CharacterBody2D
 
 # The direction the character is currently facing
-var facing_direction: FACING_DIRECTION = FACING_DIRECTION.FRONT
+@export var facing_direction: FACING_DIRECTION = FACING_DIRECTION.FRONT
+
+# The sprite used to animate the character
+@export var anim_sprite: AnimatedSprite2D
 
 # Turns the character to face the specified direction
 func set_direction(direction: FACING_DIRECTION) -> void:
@@ -9,7 +12,7 @@ func set_direction(direction: FACING_DIRECTION) -> void:
 
 # Set the walking animation of the player based on the direction they are
 # moving in
-func set_walking_animation(direction: Vector2, anim_sprite: AnimatedSprite2D):
+func set_walking_animation(direction: Vector2):
 	var facing = get_facing_direction(direction)
 	# Store the latest walking direction so we can set the proper idle animation
 	facing_direction = facing
@@ -30,7 +33,7 @@ func set_walking_animation(direction: Vector2, anim_sprite: AnimatedSprite2D):
 		
 
 # Set the idle animation of the player based on the most recent walking direction
-func set_idle_animation(anim_sprite: AnimatedSprite2D):
+func set_idle_animation():
 	var facing = facing_direction
 	match facing:
 		FACING_DIRECTION.FRONT:
