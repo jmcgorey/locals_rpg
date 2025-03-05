@@ -1,88 +1,21 @@
-extends CharacterBody2D
-class_name Player
+class_name Player extends Character
 
 const SPEED = 75
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimSprite
 
-enum FACING_DIRECTION {NONE, FRONT, BACK, LEFT, RIGHT}
-
-var last_facing_direction: FACING_DIRECTION = FACING_DIRECTION.FRONT
+func _ready() -> void:
+	set_direction(Character.FACING_DIRECTION.BACK)
 
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = input_direction * SPEED	
+	velocity = input_direction * SPEED
 	
 	if abs(velocity.x) > 0 || abs(velocity.y) > 0:
-		set_walking_animation(input_direction)
+		set_walking_animation(input_direction, anim_sprite)
 	else:
-		set_idle_animation()
+		set_idle_animation(anim_sprite)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()
-
-# Set the walking animation of the player based on the direction they are
-# moving in
-func set_walking_animation(direction):
-	var facing = get_facing_direction(direction)
-	# Store the latest walking direction so we can set the proper idle animation
-	last_facing_direction = facing 
-	
-	match facing:
-		FACING_DIRECTION.FRONT:
-			anim_sprite.play('walk_front')
-			return
-		FACING_DIRECTION.BACK:
-			anim_sprite.play('walk_back')
-			return
-		FACING_DIRECTION.LEFT:
-			anim_sprite.play('walk_left')
-			return
-		FACING_DIRECTION.RIGHT:
-			anim_sprite.play('walk_right')
-			return
-		
-
-# Set the idle animation of the player based on the most recent walking direction
-func set_idle_animation():
-	var facing = last_facing_direction
-	match facing:
-		FACING_DIRECTION.FRONT:
-			anim_sprite.play('idle_front')
-			return
-		FACING_DIRECTION.BACK:
-			anim_sprite.play('idle_back')
-			return
-		FACING_DIRECTION.LEFT:
-			anim_sprite.play('idle_left')
-			return
-		FACING_DIRECTION.RIGHT:
-			anim_sprite.play('idle_right')
-			return
-
-# Determine which direction the player is facing based on its movement vector
-func get_facing_direction(direction: Vector2) -> FACING_DIRECTION:
-	if direction.x > 0:
-		return FACING_DIRECTION.RIGHT
-	if direction.x < 0:
-		return FACING_DIRECTION.LEFT
-	if direction.y < 0:
-		return FACING_DIRECTION.BACK
-	if direction.y > 0:
-		return FACING_DIRECTION.FRONT
-		
-	return FACING_DIRECTION.NONE
-
-# Get the text of the facing direction for pretty printing purposes
-func get_facing_direction_text(dir: FACING_DIRECTION) -> String:
-	match dir:
-		FACING_DIRECTION.FRONT:
-			return 'front'
-		FACING_DIRECTION.BACK:
-			return 'back'
-		FACING_DIRECTION.LEFT:
-			return 'left'
-		FACING_DIRECTION.RIGHT:
-			return 'right'
-	return 'none'
