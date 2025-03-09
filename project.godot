@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 InteractionManager="*res://scripts/interaction/interaction_manager.gd"
+LevelManager="*res://scripts/scene_management/level_manager.gd"
 
 [display]
 
