@@ -13,12 +13,16 @@ config_version=5
 config/name="locals_rpg"
 run/main_scene="res://scenes/levels/diner_area.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
 
 InteractionManager="*res://scripts/interaction/interaction_manager.gd"
 LevelManager="*res://scripts/scene_management/level_manager.gd"
+DialogueDisplay="*res://scenes/dialogue/DialogueDisplay.tscn"
 
 [display]
 
@@ -75,3 +79,4 @@ pointing/emulate_touch_from_mouse=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

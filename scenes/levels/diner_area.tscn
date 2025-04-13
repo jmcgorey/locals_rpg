@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://qkd308dtfqwi"]
+[gd_scene load_steps=68 format=4 uid="uid://qkd308dtfqwi"]
 
 [ext_resource type="Script" uid="uid://bmn1sw524lom3" path="res://scenes/levels/scripts/level.gd" id="1_4mgwg"]
 [ext_resource type="Texture2D" uid="uid://m8x26ue1faqe" path="res://assets/images/world/diner_tiles_1.png" id="1_hsm8c"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cnr783urcmgmb" path="res://scenes/npc/npc.tscn" id="4_um344"]
 [ext_resource type="Texture2D" uid="uid://bw0h1vuj172kj" path="res://assets/images/characters/DeliOwner.png" id="5_g4nqy"]
 [ext_resource type="Texture2D" uid="uid://dc71c1nrfme63" path="res://assets/images/characters/DeliCookRodrigo.png" id="6_g4nqy"]
+[ext_resource type="Texture2D" uid="uid://bp7y3lru6thgh" path="res://assets/images/set_pieces/Menu.png" id="10_yh74d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11t1m"]
 texture = ExtResource("1_hsm8c")
@@ -285,7 +286,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omsfd"]
-size = Vector2(9, 6)
+size = Vector2(9, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iaaqo"]
 atlas = ExtResource("6_g4nqy")
@@ -499,7 +500,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnev4"]
-size = Vector2(9, 7)
+size = Vector2(9, 19)
 
 [node name="DinerArea" type="Node2D" node_paths=PackedStringArray("initial_spawn_point")]
 script = ExtResource("1_4mgwg")
@@ -516,7 +517,7 @@ tile_set = SubResource("TileSet_nfkdu")
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="initialSpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(241, 160)
+position = Vector2(132, 124)
 script = ExtResource("3_yh74d")
 spawn_direction = 3
 metadata/_custom_type_script = "uid://cxd2clpcpgd8"
@@ -548,7 +549,7 @@ autoplay = "idle_front"
 frame_progress = 0.925287
 
 [node name="OwnerCollisionShape" type="CollisionShape2D" parent="NPCs/DeliOwner"]
-position = Vector2(-0.5, 3)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_omsfd")
 
 [node name="DeliCook" parent="NPCs" node_paths=PackedStringArray("anim_sprite") instance=ExtResource("4_um344")]
@@ -563,7 +564,25 @@ autoplay = "idle_left"
 frame_progress = 0.735892
 
 [node name="CookCollisionShape" type="CollisionShape2D" parent="NPCs/DeliCook"]
-position = Vector2(-0.5, 3.5)
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_pnev4")
+
+[node name="DeliCook2" parent="NPCs" node_paths=PackedStringArray("anim_sprite") instance=ExtResource("4_um344")]
+position = Vector2(60, 89)
+anim_sprite = NodePath("CookSprite")
+
+[node name="CookSprite" type="AnimatedSprite2D" parent="NPCs/DeliCook2"]
+sprite_frames = SubResource("SpriteFrames_um344")
+animation = &"idle_left"
+autoplay = "idle_left"
+frame_progress = 0.735892
+
+[node name="CookCollisionShape" type="CollisionShape2D" parent="NPCs/DeliCook2"]
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_pnev4")
 
 [node name="HUD" parent="." instance=ExtResource("4_6qw5l")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(38, 92)
+texture = ExtResource("10_yh74d")

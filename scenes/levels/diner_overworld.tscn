@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://db2v13w25iy6g"]
+[gd_scene load_steps=18 format=4 uid="uid://db2v13w25iy6g"]
 
 [ext_resource type="Texture2D" uid="uid://bff0qwrl4v2hg" path="res://assets/images/world/starter_outside_tileset.png" id="1_ir7ua"]
 [ext_resource type="Script" uid="uid://bmn1sw524lom3" path="res://scenes/levels/scripts/level.gd" id="1_tur6a"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cx5gi21p3gwmw" path="res://assets/images/set_pieces/Gold_Deli.png" id="4_p0erp"]
 [ext_resource type="PackedScene" uid="uid://c8j43pumkil1d" path="res://scenes/level_transitions/spawn_point.tscn" id="4_t0bfn"]
 [ext_resource type="PackedScene" uid="uid://khfb5hbqb3ds" path="res://scenes/controls/hud.tscn" id="5_bi0wy"]
+[ext_resource type="PackedScene" uid="uid://ct510tdpmp10n" path="res://scenes/set_pieces/tree.tscn" id="5_md64i"]
+[ext_resource type="Texture2D" uid="uid://dkqg3wbm4g3yw" path="res://assets/images/set_pieces/LocalCabin_1.png" id="6_f16wo"]
 [ext_resource type="Script" uid="uid://cxd2clpcpgd8" path="res://scenes/level_transitions/spawn_point.gd" id="6_md64i"]
+[ext_resource type="Texture2D" uid="uid://cn2jv6dx0qi2e" path="res://assets/images/set_pieces/Log.png" id="7_l32pc"]
 [ext_resource type="PackedScene" uid="uid://bp24btyav5bet" path="res://scenes/level_transitions/loading_zone.tscn" id="7_tur6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wcwqp"]
@@ -165,6 +168,9 @@ size = Vector2(24, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i222j"]
 size = Vector2(64, 42)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l32pc"]
+size = Vector2(16, 44)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md64i"]
 size = Vector2(11, 12)
 
@@ -199,6 +205,35 @@ texture = ExtResource("4_p0erp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SetPieces/Diner"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_i222j")
+
+[node name="Tree" parent="SetPieces" instance=ExtResource("5_md64i")]
+position = Vector2(292, 182)
+
+[node name="Tree2" parent="SetPieces" instance=ExtResource("5_md64i")]
+position = Vector2(290, 153)
+
+[node name="Tree3" parent="SetPieces" instance=ExtResource("5_md64i")]
+position = Vector2(349, 172)
+
+[node name="Tree4" parent="SetPieces" instance=ExtResource("5_md64i")]
+position = Vector2(316, 140)
+
+[node name="Tree5" parent="SetPieces" instance=ExtResource("5_md64i")]
+position = Vector2(343, 144)
+
+[node name="Sprite2D" type="Sprite2D" parent="SetPieces"]
+position = Vector2(317, 160)
+texture = ExtResource("6_f16wo")
+
+[node name="LogSprite" type="Sprite2D" parent="SetPieces"]
+position = Vector2(9, 225)
+texture = ExtResource("7_l32pc")
+
+[node name="LogCollision" type="StaticBody2D" parent="SetPieces/LogSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SetPieces/LogSprite/LogCollision"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_l32pc")
 
 [node name="SpawnPoints" type="Node" parent="."]
 

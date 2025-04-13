@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ipq8owt6m4wr"]
+
+[ext_resource type="Script" uid="uid://qohbjkphm8ss" path="res://scenes/dialogue/dialogue_player.gd" id="1_ktur6"]
+
+[node name="DialoguePlayer" type="Node"]
+script = ExtResource("1_ktur6")
+showSequencedDialog = null
+characterName = null

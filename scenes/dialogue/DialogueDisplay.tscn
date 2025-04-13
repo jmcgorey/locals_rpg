@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://cny3usu5hphxt"]
+
+[ext_resource type="FontFile" uid="uid://2ndk51xqolqb" path="res://assets/fonts/PixelOperator8.ttf" id="1_2dt67"]
+[ext_resource type="Script" uid="uid://dnllxquf0ev55" path="res://scenes/dialogue/dialogue_display.gd" id="1_wm3mj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3mj"]
+bg_color = Color(0.882353, 0.882353, 0.882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.196078, 0.196078, 0.196078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+expand_margin_left = 5.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k836n"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.881937, 0.881937, 0.881937, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.194349, 0.194349, 0.194349, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="DialogueDisplay" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+visible = false
+script = ExtResource("1_wm3mj")
+
+[node name="DialogueUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameContainer" type="PanelContainer" parent="DialogueUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -76.0
+offset_right = -122.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wm3mj")
+
+[node name="NameLabel" type="RichTextLabel" parent="DialogueUI/NameContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_fonts/normal_font = ExtResource("1_2dt67")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Cool Kid"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogTextView" type="PanelContainer" parent="DialogueUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -59.0
+offset_right = 192.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k836n")
+
+[node name="DialogueQuestionContainer" type="HBoxContainer" parent="DialogueUI/DialogTextView"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="QuestionLabel" type="RichTextLabel" parent="DialogueUI/DialogTextView/DialogueQuestionContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(339, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.366595, 0.366595, 0.366595, 1)
+theme_override_fonts/normal_font = ExtResource("1_2dt67")
+theme_override_fonts/mono_font = ExtResource("1_2dt67")
+theme_override_fonts/italics_font = ExtResource("1_2dt67")
+theme_override_fonts/bold_italics_font = ExtResource("1_2dt67")
+theme_override_fonts/bold_font = ExtResource("1_2dt67")
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+text = "This is test text and it should be quite large. This is what happens when the text wraps. It should contain up to 3 - 4 lines pretty well. Yes we can!"
+scroll_active = false
+
+[node name="YesButton" type="Button" parent="DialogueUI/DialogTextView/DialogueQuestionContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2dt67")
+theme_override_font_sizes/font_size = 8
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="DialogueUI/DialogTextView/DialogueQuestionContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2dt67")
+theme_override_font_sizes/font_size = 8
+text = "No"
+
+[node name="DialogueTextContainer" type="HBoxContainer" parent="DialogueUI/DialogTextView"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="TextLabel" type="RichTextLabel" parent="DialogueUI/DialogTextView/DialogueTextContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(339, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.366595, 0.366595, 0.366595, 1)
+theme_override_fonts/normal_font = ExtResource("1_2dt67")
+theme_override_fonts/mono_font = ExtResource("1_2dt67")
+theme_override_fonts/italics_font = ExtResource("1_2dt67")
+theme_override_fonts/bold_italics_font = ExtResource("1_2dt67")
+theme_override_fonts/bold_font = ExtResource("1_2dt67")
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Did you uh, did you, did you know you can tell how far away a storm is by counting the seconds between lightning and thunder?  [shake][rainbow]So cool!!![/rainbow][/shake]"
+scroll_active = false
+
+[node name="NextButton" type="Button" parent="DialogueUI/DialogTextView/DialogueTextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2dt67")
+theme_override_font_sizes/font_size = 8
+text = "Next"

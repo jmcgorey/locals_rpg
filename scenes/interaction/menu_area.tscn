@@ -14,3 +14,8 @@ script = ExtResource("1_31nsd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_8t1t7")
+
+[node name="EventTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="EventTimer" to="." method="_on_timer_timeout"]
