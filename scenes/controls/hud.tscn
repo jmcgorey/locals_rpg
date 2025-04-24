@@ -11,19 +11,21 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = -28.0
+offset_top = -60.0
 offset_right = 64.0
-offset_bottom = -28.0
+offset_bottom = -60.0
 grow_vertical = 0
+scale = Vector2(1.5, 1.5)
 
 [node name="InteractionButton" parent="." instance=ExtResource("2_x4cgb")]
 modulate = Color(1, 1, 1, 0.498039)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -64.0
-offset_top = -28.0
-offset_right = -64.0
-offset_bottom = -28.0
+offset_left = -63.9999
+offset_top = -60.0
+offset_right = -63.9999
+offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(3, 3)
