@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkbpfcd2lp27r"]
+
+[ext_resource type="FontFile" uid="uid://2ndk51xqolqb" path="res://assets/fonts/PixelOperator8.ttf" id="1_8i6u0"]
+
+[node name="InteractText" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_8i6u0")
+theme_override_font_sizes/font_size = 8
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
