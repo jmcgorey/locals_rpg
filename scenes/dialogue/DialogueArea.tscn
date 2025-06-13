@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://s85sp0tyv7w1"]
+
+[ext_resource type="Script" uid="uid://yfh5ie2vbg4f" path="res://scenes/dialogue/dialogue_area.gd" id="1_emabw"]
+
+[node name="DialogueArea" type="Area2D"]
+script = ExtResource("1_emabw")
+metadata/_custom_type_script = "uid://osywf2hb3g1c"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

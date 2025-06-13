@@ -3,48 +3,64 @@ class_name DialogueManager extends CanvasLayer
 # General components
 @onready var dialogue_ui: Control = $DialogueUI
 
-# Question view components
-@onready var dialogue_question_container: HBoxContainer = $DialogueUI/DialogTextView/DialogueQuestionContainer
-@onready var question_label: RichTextLabel = $DialogueUI/DialogTextView/DialogueQuestionContainer/QuestionLabel
-
 # Text view components
-@onready var dialogue_text_container: HBoxContainer = $DialogueUI/DialogTextView/DialogueTextContainer
-@onready var text_label: RichTextLabel = $DialogueUI/DialogTextView/DialogueTextContainer/TextLabel
-@onready var next_button: Button = $DialogueUI/DialogTextView/DialogueTextContainer/NextButton
+@onready var dialogue_text: RichTextLabel = %DialogueText
+@onready var next_button: Button = %NextButton
+@onready var name_label: RichTextLabel = %NameLabel
 
-enum DIALOGUE_MODE {TEXT, QUESTION}
+var dialogue_item: DialogueItem
 
-# TODO - maybe don't keep - function call may suffice
-var current_mode: DIALOGUE_MODE = DIALOGUE_MODE.TEXT :
-	set (_mode):
-		current_mode = _mode
-		set_dialogue_mode(_mode)
-
+signal dialogue_started
+signal dialogue_ended
 
 func _ready() -> void:
-	# hide_dialogue_ui() # Start hidden
-	pass
+	visible = false
+	next_button.pressed.connect(_on_next_line_pressed)
 
 
-func hide_dialogue_ui() -> void:
-	print('Hiding dialogue ui')
-	dialogue_ui.visible = false
+func play_dialogue_item(speaker_name: String, _dialogue_item: DialogueItem) -> void:
+	if _dialogue_item == null:
+		print('No dialogue item to display!')
+	dialogue_item = _dialogue_item
+	_set_speaker_name(speaker_name)
+	_start_dialogue()
+	_display_next_line()
 
-func show_dialogue_ui() -> void:
-	print('Showing dialogue ui')
-	dialogue_ui.visible = true
+
+func _set_speaker_name(speaker_name: String) -> void:
+	name_label.text = speaker_name
+
+
+func _start_dialogue() -> void:
+	visible = true
+	get_tree().paused = true # Pause the game while dialogue up
+	dialogue_started.emit()
+
+
+func _finish_dialogue() -> void:
+	visible = false
+	get_tree().paused = false # Unpause game
+	dialogue_ended.emit()
+	dialogue_item = null # clear dialogue item
+
+
+func _display_next_line() -> void:
+	if dialogue_item == null:
+		_finish_dialogue()
 	
+	var next_line = dialogue_item.get_next_line()
+	var is_last_line = dialogue_item.is_last_line()
+	
+	dialogue_text.text = next_line
+	
+	if next_line == '': # If out of dialogue, finish up
+		_finish_dialogue()
+	
+	if is_last_line:
+		%NextButton.text = 'Done'
+	else:
+		%NextButton.text = 'Next'
 
-# Updates the display to reflect the dialog mode being currently used
-func set_dialogue_mode(_mode: DIALOGUE_MODE) -> void:
-	if _mode == DIALOGUE_MODE.QUESTION:
-		dialogue_text_container.visible = false
-		dialogue_question_container.visible = true
-	else: # Default to TEXT mode
-		dialogue_question_container.visible = false
-		dialogue_text_container.visible = true
-	pass
-
-# func set_text_details(text, name):
-	# TODO function to update label text & next button
-	# Button should update to "End" or something when on last option
+## Advance to the next line in the dialogue when the button is pressed
+func _on_next_line_pressed():
+	_display_next_line()

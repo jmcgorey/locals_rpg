@@ -40,12 +40,14 @@ func hide_interact_text() -> void:
 	
 # Automatically register the area when the player enters it
 func _on_body_entered(_body: Node2D) -> void:
+	print('Body entered')
 	if _body is Player and _is_active:
 		register()
 		show_interact_text()
 		
 # Automatically deregister the area when the player leaves it
 func _on_body_exited(_body: Node2D) -> void:
+	print('Body exited')
 	if _body is Player:
 		deregister()
 		hide_interact_text()

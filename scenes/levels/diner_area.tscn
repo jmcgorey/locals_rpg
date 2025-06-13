@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://qkd308dtfqwi"]
+[gd_scene load_steps=91 format=4 uid="uid://qkd308dtfqwi"]
 
 [ext_resource type="Script" uid="uid://bmn1sw524lom3" path="res://scenes/levels/scripts/level.gd" id="1_4mgwg"]
 [ext_resource type="Texture2D" uid="uid://m8x26ue1faqe" path="res://assets/images/world/diner_tiles_1.png" id="1_hsm8c"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dc71c1nrfme63" path="res://assets/images/characters/DeliCookRodrigo.png" id="6_g4nqy"]
 [ext_resource type="Texture2D" uid="uid://p81y56cmxhuo" path="res://assets/images/characters/little_kid_character.png" id="9_q8htm"]
 [ext_resource type="Texture2D" uid="uid://bp7y3lru6thgh" path="res://assets/images/set_pieces/Menu.png" id="10_yh74d"]
+[ext_resource type="PackedScene" uid="uid://s85sp0tyv7w1" path="res://scenes/dialogue/DialogueArea.tscn" id="11_8yppy"]
+[ext_resource type="Script" uid="uid://clgsotci1kamv" path="res://scenes/dialogue/dialogue_item.gd" id="12_nff8q"]
+[ext_resource type="Script" uid="uid://conygjli6o0nv" path="res://scenes/dialogue/dialogue_source.gd" id="13_nrics"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11t1m"]
 texture = ExtResource("1_hsm8c")
@@ -341,6 +344,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omsfd"]
 size = Vector2(9, 13)
 
+[sub_resource type="Resource" id="Resource_8yppy"]
+script = ExtResource("12_nff8q")
+lines = Array[String](["WELCOME TO DELI", "[rainbow]HELL YEAH[/rainbow]"])
+metadata/_custom_type_script = "uid://clgsotci1kamv"
+
+[sub_resource type="Resource" id="Resource_nff8q"]
+script = ExtResource("13_nrics")
+speaker_name = "Deli Owner"
+sequential_dialogue = SubResource("Resource_8yppy")
+random_dialogue_list = Array[ExtResource("12_nff8q")]([])
+metadata/_custom_type_script = "uid://conygjli6o0nv"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yppy"]
+size = Vector2(20, 46)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_iaaqo"]
 atlas = ExtResource("6_g4nqy")
 region = Rect2(0, 48, 16, 16)
@@ -555,6 +573,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnev4"]
 size = Vector2(9, 19)
 
+[sub_resource type="Resource" id="Resource_nd1pa"]
+script = ExtResource("12_nff8q")
+lines = Array[String](["HEY MISTER", "WELCOME TO DELI"])
+metadata/_custom_type_script = "uid://clgsotci1kamv"
+
+[sub_resource type="Resource" id="Resource_xx2sg"]
+script = ExtResource("13_nrics")
+speaker_name = "Little Kid"
+sequential_dialogue = SubResource("Resource_nd1pa")
+random_dialogue_list = Array[ExtResource("12_nff8q")]([])
+metadata/_custom_type_script = "uid://conygjli6o0nv"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pcmr7"]
+radius = 16.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnev4"]
 atlas = ExtResource("9_q8htm")
 region = Rect2(0, 48, 16, 16)
@@ -707,6 +740,14 @@ frame_progress = 0.925287
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_omsfd")
 
+[node name="DialogueArea" parent="NPCs/DeliOwner" instance=ExtResource("11_8yppy")]
+dialogue_source = SubResource("Resource_nff8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/DeliOwner/DialogueArea"]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_8yppy")
+debug_color = Color(0.7, 0.571667, 0, 0.419608)
+
 [node name="DeliCook" parent="NPCs" node_paths=PackedStringArray("anim_sprite") instance=ExtResource("4_um344")]
 position = Vector2(21, 55)
 facing_direction = 3
@@ -739,6 +780,13 @@ shape = SubResource("RectangleShape2D_pnev4")
 [node name="LittleKidNPC" parent="NPCs" node_paths=PackedStringArray("anim_sprite") instance=ExtResource("4_um344")]
 position = Vector2(91, 159)
 anim_sprite = NodePath("LittleKidSprite")
+
+[node name="DialogueArea" parent="NPCs/LittleKidNPC" instance=ExtResource("11_8yppy")]
+dialogue_source = SubResource("Resource_xx2sg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/LittleKidNPC/DialogueArea"]
+shape = SubResource("CircleShape2D_pcmr7")
+debug_color = Color(0.7, 0.571667, 0, 0.419608)
 
 [node name="LittleKidSprite" type="AnimatedSprite2D" parent="NPCs/LittleKidNPC"]
 sprite_frames = SubResource("SpriteFrames_a86m6")
